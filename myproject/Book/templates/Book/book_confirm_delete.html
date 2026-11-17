@@ -1,0 +1,17 @@
+{% extends "Book/base.html" %}
+
+{% block title %}Delete book | Book Management{% endblock %}
+
+{% block content %}
+<section class="panel">
+    <h1>Delete book</h1>
+    <p>Are you sure you want to delete “{{ object.title }}” by {{ object.author }}?</p>
+    <form method="post">
+        {% csrf_token %}
+        <div class="actions">
+            <button class="button danger" type="submit">Delete book</button>
+            <a class="button secondary" href="{% url 'book:list' %}">Cancel</a>
+        </div>
+    </form>
+</section>
+{% endblock %}

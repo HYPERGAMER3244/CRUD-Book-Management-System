@@ -1,0 +1,37 @@
+{% extends "Book/base.html" %}
+
+{% block title %}Books | Book Management{% endblock %}
+
+{% block content %}
+<section class="panel">
+    <div class="toolbar">
+        <div>
+            <h1>Books</h1>
+            <p>Manage your book collection.</p>
+        </div>
+        <a class="button" href="{% url 'book:add' %}">Add a book</a>
+    </div>
+    {% if books %}
+    <table>
+        <thead>
+            <tr><th>Title</th><th>Author</th><th>Price</th><th>Actions</th></tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+            <tr>
+                <td>{{ book.title }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.price }}</td>
+                <td class="actions">
+                    <a href="{% url 'book:edit' book.pk %}">Edit</a>
+                    <a href="{% url 'book:delete' book.pk %}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No books yet. Add your first book to get started.</p>
+    {% endif %}
+</section>
+{% endblock %}

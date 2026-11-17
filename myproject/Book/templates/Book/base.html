@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Book Management{% endblock %}</title>
+    <style>
+        :root { color-scheme: light; font-family: system-ui, sans-serif; color: #1f2937; background: #f3f5f8; }
+        body { margin: 0; }
+        header { padding: 1rem max(1.25rem, calc((100% - 900px) / 2)); background: #183153; color: white; }
+        header a { color: white; text-decoration: none; font-weight: 700; }
+        main { max-width: 900px; margin: 2rem auto; padding: 0 1.25rem; }
+        .panel { padding: 1.5rem; border-radius: 12px; background: white; box-shadow: 0 3px 14px #172b4d12; }
+        .toolbar, .actions { display: flex; align-items: center; gap: .75rem; }
+        .toolbar { justify-content: space-between; margin-bottom: 1rem; }
+        .button { display: inline-block; padding: .6rem .9rem; border: 0; border-radius: 6px; background: #2364aa; color: white; font: inherit; text-decoration: none; cursor: pointer; }
+        .button.secondary { background: #64748b; }
+        .button.danger { background: #b42318; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: .85rem .5rem; border-bottom: 1px solid #e5e7eb; text-align: left; }
+        th { color: #526174; font-size: .85rem; }
+        form p { display: grid; gap: .4rem; margin: 1rem 0; }
+        input { box-sizing: border-box; max-width: 100%; padding: .65rem; border: 1px solid #cbd5e1; border-radius: 6px; font: inherit; }
+        .errorlist { color: #b42318; }
+        @media (max-width: 600px) { th, td { padding: .65rem .25rem; } .actions { flex-direction: column; align-items: flex-start; } }
+    </style>
+</head>
+<body>
+    <header><a href="{% url 'book:list' %}">Book Management</a></header>
+    <main>{% block content %}{% endblock %}</main>
+</body>
+</html>

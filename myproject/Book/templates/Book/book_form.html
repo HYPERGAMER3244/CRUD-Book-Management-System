@@ -1,0 +1,17 @@
+{% extends "Book/base.html" %}
+
+{% block title %}{% if object %}Edit{% else %}Add{% endif %} book | Book Management{% endblock %}
+
+{% block content %}
+<section class="panel">
+    <h1>{% if object %}Edit book{% else %}Add a book{% endif %}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="actions">
+            <button class="button" type="submit">Save book</button>
+            <a class="button secondary" href="{% url 'book:list' %}">Cancel</a>
+        </div>
+    </form>
+</section>
+{% endblock %}
